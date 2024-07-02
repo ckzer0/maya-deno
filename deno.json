@@ -1,0 +1,15 @@
+{
+  "name": "@ckzero/maya",
+  "version": "0.1.0",
+  "imports": {
+    "@ckzero/maya-signal": "./src/signal/index.ts",
+    "@ckzero/value-utils": "jsr:@ckzero/value-utils@^0.1.0"
+  },
+  "exports": {
+    "./signal": "./src/signal/index.ts",
+    "./web": "./src/web/index.ts"
+  },
+  "compilerOptions": {
+    "lib": ["esnext", "dom", "dom.iterable"]
+  }
+}
