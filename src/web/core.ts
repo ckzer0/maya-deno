@@ -69,21 +69,21 @@ const {
   disableDomAccessPhase,
 } = phaseHelper();
 
-export const generateStaticHtml = (app: () => MayaElement): string => {
+export const generateStaticHtml = (page: () => MayaElement): string => {
   enableBuildPhase();
-  const appNode = app();
+  const htmlPageNode = page();
   disableBuildPhase();
-  return appNode?.outerHTML;
+  return htmlPageNode?.outerHTML;
 };
 
-export const runApp = (appRoot: Element, app: () => MayaElement): void => {
-  mountUnmountObserver.observe(appRoot, {
+export const runScript = (page: () => MayaElement): void => {
+  mountUnmountObserver.observe(document.body, {
     childList: true,
     subtree: true,
   });
   setTimeout(() => {
     enableDomAccessPhase();
-    app();
+    page();
     disableDomAccessPhase();
   });
 };
